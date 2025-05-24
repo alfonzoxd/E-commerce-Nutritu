@@ -128,4 +128,9 @@ class HomeController extends Controller
         $carrito = session('carrito', []);
         return view('carrito', compact('carrito'));
     }
+
+    public function contactanos()
+    {
+        return view('contactanos');
+    }
 }
