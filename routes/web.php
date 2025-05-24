@@ -15,4 +15,5 @@ Route::get('/carrito', [HomeController::class, 'carrito'])->name('carrito');
 Route::post('/carrito/agregar/{id}', [HomeController::class, 'agregarCarrito'])
      ->where('id', '[0-9]+')
      ->name('carrito.agregar');
+Route::delete('/carrito/eliminar/{id}', [HomeController::class, 'eliminarDelCarrito'])->name('carrito.eliminar');
 Route::get('/contactanos', [HomeController::class, 'contactanos'])->name('contactanos');

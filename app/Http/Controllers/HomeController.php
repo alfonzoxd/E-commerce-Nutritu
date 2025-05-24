@@ -101,8 +101,8 @@ class HomeController extends Controller
     public function agregarCarrito(Request $request, $id)
     {
         $cantidad = max(1, (int) $request->input('cantidad', 1));
-        $productos = collect($this->datos['productos'])->values();
 
+        $productos = collect($this->datos['productos'])->values();
         if (! isset($productos[$id])) {
             return redirect()->back();
         }
@@ -111,7 +111,8 @@ class HomeController extends Controller
         $carrito = session('carrito', []);
 
         if (isset($carrito[$id])) {
-            $carrito[$id]['cantidad'] += $cantidad;
+            $nuevaCantidad = $carrito[$id]['cantidad'] + $cantidad;
+            $carrito[$id]['cantidad'] = min(10, $nuevaCantidad);
         } else {
             $carrito[$id] = [
                 'producto' => $p['nombre'],
@@ -119,9 +120,14 @@ class HomeController extends Controller
                 'cantidad' => $cantidad,
             ];
         }
+
         session(['carrito' => $carrito]);
-        return redirect()->route('carrito');
+
+        return redirect()->route('producto.detalle', ['id' => $id])
+                        ->with('success', 'Producto añadido al carrito con éxito.');
     }
+
+
 
     public function carrito()
     {
@@ -132,5 +138,15 @@ class HomeController extends Controller
     public function contactanos()
     {
         return view('contactanos');
+    }
+
+    public function eliminarDelCarrito($id)
+    {
+        $carrito = session('carrito', []);
+        if (isset($carrito[$id])) {
+            unset($carrito[$id]);
+            session(['carrito' => $carrito]);
+        }
+        return redirect()->route('carrito');
     }
 }

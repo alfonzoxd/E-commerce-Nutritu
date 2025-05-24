@@ -1,4 +1,3 @@
-{{-- resources/views/layouts/app.blade.php --}}
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,41 +11,36 @@
 @stack('scripts')
 <body class="flex flex-col min-h-screen">
 
-  {{-- CONTENEDOR: Logo arriba, navegación abajo --}}
 <div class="bg-gradient-to-r from-green-100 via-white to-green-100 mb-6 shadow border-b border-green-200">
-    <div class="container mx-auto px-4 py-6 flex flex-col items-center">
+  <div class="container mx-auto px-4 py-6 flex flex-col items-center">
 
-      {{-- Logo --}}
-      <a href="{{ route('home') }}">
-        <img src="{{ asset('images/logo.png') }}" alt="Logo NutriTÚ" class="h-20 w-auto mb-4">
-      </a>
+    <a href="{{ route('home') }}">
+      <img src="{{ asset('images/logo.png') }}" alt="Logo NutriTÚ" class="h-20 w-auto mb-4">
+    </a>
 
-      {{-- Navegación + Buscador en la misma fila --}}
-      <div class="w-full max-w-4xl flex items-center justify-between">
+    <div class="w-full max-w-4xl flex items-center justify-between">
 
-        {{-- Menú de secciones --}}
-        <nav class="flex items-center space-x-6">
-          <a href="{{ route('home') }}" class="text-green-700 font-semibold hover:text-green-500">Inicio</a>
+      <nav class="flex items-center space-x-6">
+        <a href="{{ route('home') }}" class="text-green-700 font-semibold hover:text-green-500">Inicio</a>
 
-          <div class="relative group">
-            <span class="text-green-700 font-semibold hover:text-green-500 cursor-pointer">Categorías</span>
-            <ul class="absolute hidden group-hover:block bg-white bg-opacity-80 shadow mt-2 z-50 rounded">
-              @foreach($categorias as $slug => $label)
-                <li>
-                  <a href="{{ route('secciones', $slug) }}"
-                     class="block px-4 py-2 hover:bg-green-200">
-                    {{ $label }}
-                  </a>
-                </li>
-              @endforeach
-            </ul>
-          </div>
+        <div class="relative group">
+          <span class="text-green-700 font-semibold hover:text-green-500 cursor-pointer">Categorías</span>
+          <ul class="absolute hidden group-hover:block bg-white bg-opacity-80 shadow mt-2 z-50 rounded">
+            @foreach($categorias as $slug => $label)
+              <li>
+                <a href="{{ route('secciones', $slug) }}"
+                   class="block px-4 py-2 hover:bg-green-200">
+                  {{ $label }}
+                </a>
+              </li>
+            @endforeach
+          </ul>
+        </div>
 
-          <a href="{{ route('carrito') }}" class="text-green-700 font-semibold hover:text-green-500">Carrito</a>
-          <a href="{{ route('contactanos') }}" class="text-green-700 font-semibold hover:text-green-500">Contáctanos</a>
-        </nav>
+        <a href="{{ route('contactanos') }}" class="text-green-700 font-semibold hover:text-green-500">Contáctanos</a>
+      </nav>
 
-        {{-- Buscador --}}
+      <div class="flex items-center space-x-4">
         <form action="{{ route('secciones') }}" method="GET" class="relative">
           <input
             type="text"
@@ -63,26 +57,33 @@
           </button>
         </form>
 
+        <a href="{{ route('carrito') }}" class="text-green-700 hover:text-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m14-9l2 9M9 21a1 1 0 102 0 1 1 0 10-2 0zm6 0a1 1 0 102 0 1 1 0 10-2 0z" />
+            </svg>
+        </a>
       </div>
+
     </div>
   </div>
+</div>
 
-  {{-- CONTENIDO PRINCIPAL --}}
-  <main class="flex-grow container mx-auto px-4">
-    @yield('content')
-  </main>
+<main class="flex-grow container mx-auto px-4">
+  @yield('content')
+</main>
 
-  {{-- FOOTER --}}
-  <footer class="mt-10 bg-white bg-opacity-80 shadow py-4 text-center border-t border-gray-200 text-green-700 font-semibold hover:text-green-500">
-    © {{ date('Y') }} NutriTÚ. Todos los derechos reservados.
-  </footer>
+<footer class="mt-10 bg-white bg-opacity-80 shadow py-4 text-center border-t border-gray-200 text-green-700 font-semibold hover:text-green-500">
+  © {{ date('Y') }} NutriTÚ. Todos los derechos reservados.
+</footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 800,
-      once: true,
-    });
-  </script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800,
+    once: true,
+  });
+</script>
 </body>
 </html>
