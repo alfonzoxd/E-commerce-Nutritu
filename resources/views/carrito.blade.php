@@ -32,6 +32,10 @@
     <div class="bg-yellow-100 border border-yellow-400 text-yellow-800 px-4 py-3 rounded mb-4">
       {{ session('warning') }}
     </div>
+  @elseif(session('error'))
+    <div class="bg-red-100 border border-red-400 text-red-800 px-4 py-3 rounded mb-4">
+      {{ session('error') }}
+    </div>
   @endif
 
   @if(count($carrito))
@@ -78,9 +82,9 @@
     </table>
 
     <div class="mt-6 text-right">
-      <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:opacity-50" disabled>
+      <a href="{{ route('checkout') }}" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition inline-block">
         Finalizar Compra
-      </button>
+      </a>
     </div>
   @else
     <p>Tu carrito está vacío.</p>

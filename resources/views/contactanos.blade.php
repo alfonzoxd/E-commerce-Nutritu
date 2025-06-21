@@ -66,14 +66,45 @@
     align-items: center;
     justify-content: center;
     min-width: 28px;
+    transition: all 0.3s ease;
+  }
+
+  /* Estilo especial para Instagram */
+  .contact-card i.fa-instagram {
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+
+  .contact-card i.fa-instagram:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(188, 24, 136, 0.4);
+  }
+
+  /* Hover effects para otros iconos */
+  .contact-card i:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
   }
 
   a {
     color: #0066cc;
     text-decoration: none;
+    transition: color 0.3s ease;
   }
+
   a:hover {
     text-decoration: underline;
+  }
+
+  /* Estilo especial para el enlace de Instagram */
+  a.instagram-link {
+    color: #bc1888;
+    font-weight: 700;
+  }
+
+  a.instagram-link:hover {
+    color: #dc2743;
   }
 </style>
 
@@ -107,6 +138,11 @@
     <p>
       <i class="fa-solid fa-envelope"></i>
       <a href="mailto:hola@nutritú.com">HOLA@NUTRITÚ.COM</a>
+    </p>
+
+    <p>
+      <i class="fa-brands fa-instagram"></i>
+      <a href="https://www.instagram.com/nutritu_23/" target="_blank" rel="noopener noreferrer" class="instagram-link">@NUTRITU_23</a>
     </p>
   </div>
 @endsection

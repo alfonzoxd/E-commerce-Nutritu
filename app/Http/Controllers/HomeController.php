@@ -50,7 +50,6 @@ class HomeController extends Controller
             });
         }
 
-
         return view('home', [
             'destacados' => $productos->values()->all(),
         ]);
@@ -127,8 +126,6 @@ class HomeController extends Controller
                         ->with('success', 'Producto añadido al carrito con éxito.');
     }
 
-
-
     public function carrito()
     {
         $carrito = session('carrito', []);
@@ -148,5 +145,11 @@ class HomeController extends Controller
             session(['carrito' => $carrito]);
         }
         return redirect()->route('carrito');
+    }
+
+    public function limpiarCarrito()
+    {
+        session()->forget('carrito');
+        return redirect()->route('carrito')->with('success', 'Carrito limpiado correctamente.');
     }
 }
