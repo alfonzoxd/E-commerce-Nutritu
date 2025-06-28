@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('title','home')
-
 @push('styles')
 <style>
   body {
@@ -16,8 +15,26 @@
     pointer-events: none;
     z-index: -1;
   }
+
+  .swiper {
+    height: 20rem; /* h-80 equivalente */
+  }
+
+  @media (min-width: 768px) {
+    .swiper {
+      height: 500px; /* md:h-[500px] equivalente */
+    }
+  }
+
+  .swiper-slide img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 </style>
 @endpush
+
 
 @section('content')
 
@@ -26,15 +43,15 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <img src="{{ asset('images/banner4.jpg') }}" alt="Banner 1"
-               class="w-full h-[600px] object-cover">
+               class="w-full h-80 md:h-120 object-cover">
         </div>
         <div class="swiper-slide">
           <img src="{{ asset('images/banner1.jpg') }}" alt="Banner 3"
-               class="w-full h-[600px] object-cover">
+               class="w-full h-80 md:h-120 object-cover">
         </div>
         <div class="swiper-slide">
           <img src="{{ asset('images/banner3.jpg') }}" alt="Banner 4"
-               class="w-full h-[600px] object-cover">
+               class="w-full h-80 md:h-120 object-cover">
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -42,6 +59,7 @@
       <div class="swiper-button-next"></div>
     </div>
   </div>
+
 
   <div class="flex">
     <aside class="w-64 pr-6">
