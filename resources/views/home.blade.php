@@ -45,10 +45,10 @@
           <img src="{{ asset('images/banner4.jpg') }}" alt="Banner 1"
                class="w-full h-80 md:h-120 object-cover">
         </div>
-        <div class="swiper-slide">
+        {{-- <div class="swiper-slide">
           <img src="{{ asset('images/banner1.jpg') }}" alt="Banner 3"
                class="w-full h-80 md:h-120 object-cover">
-        </div>
+        </div> --}}
         <div class="swiper-slide">
           <img src="{{ asset('images/banner3.jpg') }}" alt="Banner 4"
                class="w-full h-80 md:h-120 object-cover">
